@@ -1,0 +1,28 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "data": {
+          "api_token": "API Token",
+          "source_sensor": "Gas Sensor (Source)",
+          "update_time": "Upload time"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Authentication Expired",
+        "description": "Your Mindergas API token is no longer valid. Please provide a new token."
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "api_token": "API Token",
+          "source_sensor": "Gas Sensor (Source)",
+          "update_time": "Upload time"
+        }
+      }
+    }
+  }
+}
