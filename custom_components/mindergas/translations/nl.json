@@ -1,35 +1,37 @@
 {
-  "config": {
-    "step": {
-      "user": {
-        "data": {
-          "api_token": "API Token",
-          "source_sensor": "Gas Sensor (Bron)",
-          "update_time": "Tijdstip van upload"
-        }
-      },
-      "reauth_confirm": {
-        "title": "Authenticatie verlopen",
-        "description": "Je Mindergas API-token is niet langer geldig. Voer een nieuw token in."
-      }
-    }
-  },
-  "options": {
-    "step": {
-      "init": {
-        "data": {
-          "api_token": "API Token",
-          "source_sensor": "Gas Sensor (Bron)",
-          "update_time": "Tijdstip van upload"
-        }
-      }
-    }
-  },
-  "entity": {
-    "sensor": {
-      "usage_contract_year": { "name": "Gasverbruik contractjaar" },
-      "prognosis_contract_year": { "name": "Gasprognose contractjaar" },
-      "usage_per_degree_day": { "name": "Gasverbruik per graaddag" }
-    }
-  }
+	"config": {
+		"step": {
+			"user": {
+				"data": {
+					"api_token": "API Token",
+					"source_sensor": "Gas sensor (Bron)",
+					"update_time": "Dagelijks synchronisatiemoment"
+				},
+				"description": "Voer je API token in en kies een sensor. De stand wordt één keer per dag op het gekozen tijdstip naar Mindergas.nl gestuurd (bijv. om 23:59)."
+			},
+			"reauth_confirm": {
+				"title": "Authenticatie verlopen",
+				"description": "Je Mindergas API-token is niet langer geldig. Voer een nieuw token in."
+			}
+		}
+	},
+	"options": {
+		"step": {
+			"init": {
+				"data": {
+					"api_token": "API Token",
+					"source_sensor": "Gas sensor (Bron)",
+					"update_time": "Dagelijks synchronisatiemoment"
+				},
+				"description": "Voer je API token in en kies een sensor. De stand wordt één keer per dag op het gekozen tijdstip naar Mindergas.nl gestuurd (bijv. om 23:59)."
+			}
+		}
+	},
+	"entity": {
+		"sensor": {
+			"usage_contract_year": { "name": "Gasverbruik contractjaar" },
+			"prognosis_contract_year": { "name": "Gasprognose contractjaar" },
+			"usage_per_degree_day": { "name": "Gasverbruik per graaddag" }
+		}
+	}
 }

@@ -1,35 +1,39 @@
 {
-  "config": {
-    "step": {
-      "user": {
-        "data": {
-          "api_token": "API Token",
-          "source_sensor": "Gas Sensor (Source)",
-          "update_time": "Upload time"
-        }
-      },
-      "reauth_confirm": {
-        "title": "Authentication Expired",
-        "description": "Your Mindergas API token is no longer valid. Please provide a new token."
-      }
-    }
-  },
-  "options": {
-    "step": {
-      "init": {
-        "data": {
-          "api_token": "API Token",
-          "source_sensor": "Gas Sensor (Source)",
-          "update_time": "Upload time"
-        }
-      }
-    }
-  },
-  "entity": {
-    "sensor": {
-      "usage_contract_year": { "name": "Gas usage contract year" },
-      "prognosis_contract_year": { "name": "Gas prognosis contract year" },
-      "usage_per_degree_day": { "name": "Gas usage per degree day" }
-    }
-  }
+	"config": {
+		"step": {
+			"user": {
+				"data": {
+					"api_token": "API Token",
+					"source_sensor": "Gas Sensor (Source)",
+					"update_time": "Daily synchronization time"
+				},
+				"description": "Enter your API token and select your gas meter sensor. Your reading will be uploaded to Mindergas.nl once a day at the selected time (e.g., 23:55)."
+			},
+			"reauth_confirm": {
+				"title": "Authentication Expired",
+				"description": "Your Mindergas API token is no longer valid. Please provide a new token."
+			}
+		}
+	},
+	"options": {
+		"step": {
+			"init": {
+				"data": {
+					"api_token": "API Token",
+					"source_sensor": "Gas Sensor (Source)",
+					"update_time": "Daily synchronization time"
+				},
+				"description": "Enter your API token and select your gas meter sensor. Your reading will be uploaded to Mindergas.nl once a day at the selected time (e.g., 23:55)."
+			}
+		}
+	},
+	"entity": {
+		"sensor": {
+			"usage_contract_year": { "name": "Gas usage contract year" },
+			"prognosis_contract_year": {
+				"name": "Gas prognosis contract year"
+			},
+			"usage_per_degree_day": { "name": "Gas usage per degree day" }
+		}
+	}
 }
