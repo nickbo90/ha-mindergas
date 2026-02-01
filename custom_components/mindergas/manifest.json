@@ -8,5 +8,5 @@
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/nickbo90/ha-mindergas/issues",
   "requirements": ["aiohttp"],
-  "version": "0.1.4"
+  "version": "0.1.5"
 }
