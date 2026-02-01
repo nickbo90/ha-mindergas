@@ -1,7 +1,7 @@
 # Mindergas Home Assistant Integration
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange)](https://hacs.xyz/)
-[![version](https://img.shields.io/badge/version-v0.1.5-blue)]()
+[![version](https://img.shields.io/badge/version-v0.1.6-blue)]()
 
 Integrate **Mindergas.nl** with Home Assistant to automatically upload your gas meter readings and retrieve your yearly prognosis.
 
