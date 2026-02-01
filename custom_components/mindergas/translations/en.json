@@ -23,7 +23,7 @@
 					"source_sensor": "Gas Sensor (Source)",
 					"update_time": "Daily synchronization time"
 				},
-				"description": "Enter your API token and select your gas meter sensor. Your reading will be uploaded to Mindergas.nl once a day at the selected time (e.g., 23:55)."
+				"description": "Enter your API token and select your gas meter sensor. Your reading will be uploaded to Mindergas.nl once a day at the selected time (e.g., 23:59)."
 			}
 		}
 	},

@@ -2,9 +2,11 @@ import logging
 from datetime import datetime, timedelta
 import asyncio
 from homeassistant.helpers.event import async_track_time_change, async_call_later
+from homeassistant.helpers import config_validation as cv
 from .const import DOMAIN, CONF_API_TOKEN, CONF_SENSOR, CONF_TIME
 
 _LOGGER = logging.getLogger(__name__)
+CONFIG_SCHEMA = cv.config_entry_only_config_schema("mindergas")
 
 async def async_setup(hass, config):
     return True

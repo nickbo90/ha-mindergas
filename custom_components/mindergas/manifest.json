@@ -1,14 +1,12 @@
 {
   "domain": "mindergas",
   "name": "Mindergas.nl",
-  "version": "0.1.3",
-  "documentation": "https://github.com/nickbo90/ha-mindergas",
-  "requirements": ["aiohttp"],
-  "dependencies": [],
   "codeowners": ["@nickbo90"],
   "config_flow": true,
-  "options_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/nickbo90/ha-mindergas",
   "iot_class": "cloud_polling",
-  "description": "Integrate Mindergas.nl with Home Assistant to automatically upload your gas meter readings and retrieve your yearly prognosis.",
-  "icon": "mdi:gas-cylinder"
+  "issue_tracker": "https://github.com/nickbo90/ha-mindergas/issues",
+  "requirements": ["aiohttp"],
+  "version": "0.1.3"
 }
