@@ -41,7 +41,7 @@ git tag "v$VERSION"
 
 # 5. Push to GitHub
 echo "Pushing to GitHub..."
-git push origin master
+git push origin main
 git push origin "v$VERSION"
 
 echo "Success! Version v$VERSION is live."
