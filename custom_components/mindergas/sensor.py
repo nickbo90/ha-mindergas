@@ -1,7 +1,8 @@
 import logging
 import aiohttp
 from datetime import timedelta
-from homeassistant.helpers.entity import Entity
+# Verander Entity naar SensorEntity en importeer de benodigde klassen
+from homeassistant.components.sensor import SensorEntity, SensorStateClass, SensorDeviceClass
 from .const import URL_LATEST_USAGE, URL_FORECAST, URL_USAGE_PER_DEGREE_DAY, URL_UPLOAD_METER, DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
@@ -19,7 +20,8 @@ async def async_setup_entry(hass, entry, async_add_entities):
 
     async_add_entities(sensors, update_before_add=True)
 
-class MindergasSensor(Entity):
+# We erven nu over van SensorEntity i.p.v. Entity
+class MindergasSensor(SensorEntity):
     def __init__(self, api_token, sensor_type, url, entry):
         self._api_token = api_token
         self._type = sensor_type
@@ -30,6 +32,18 @@ class MindergasSensor(Entity):
         self._unique_id = f"mindergas_sensor_{sensor_type}"
         self._state = None
         self._attr_entity_registry_enabled_default = True
+        
+        # LTS Vereisten:
+        self._attr_device_class = SensorDeviceClass.GAS
+        self._attr_native_unit_of_measurement = "m³"
+        
+        # Bepaal de juiste state_class op basis van het type sensor
+        if sensor_type in ["usage_contract_year", "prognosis_contract_year"]:
+            # Dit zijn oplopende totalen binnen het contractjaar -> LTS TOTAL
+            self._attr_state_class = SensorStateClass.TOTAL
+        else:
+            # Dit is een berekend gemiddelde/meting per graaddag -> LTS MEASUREMENT
+            self._attr_state_class = SensorStateClass.MEASUREMENT
 
     @property
     def device_info(self):
@@ -41,16 +55,13 @@ class MindergasSensor(Entity):
         }
 
     @property
-    def state(self):
+    def native_value(self):
+        # Bij SensorEntity gebruiken we native_value i.p.v. de 'state' property
         return self._state
 
     @property
     def unique_id(self):
         return self._unique_id
-
-    @property
-    def unit_of_measurement(self):
-        return "m³"
 
     @property
     def icon(self):
@@ -69,10 +80,12 @@ class MindergasSensor(Entity):
                     if resp.status == 200:
                         data = await resp.json()
                         if self._type in ["usage_contract_year", "prognosis_contract_year"]:
-                            self._state = data.get("total", {}).get("value", 0)
+                            # Zorg dat de waarde als een echt getal (float) wordt opgeslagen voor statistieken
+                            self._state = float(data.get("total", {}).get("value", 0))
                         else:
                             val = data.get("avg_last_365_days", {}).get("value")
-                            self._state = val if val is not None else data.get("value", 0)
+                            raw_val = val if val is not None else data.get("value", 0)
+                            self._state = float(raw_val)
                         
                         _LOGGER.info("Mindergas: %s updated to %s", self._type, self._state)
                     else:
